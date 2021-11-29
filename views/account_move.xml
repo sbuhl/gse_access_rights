@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<odoo>
+
+    <record id="goshop_invoice_form" model="ir.ui.view">
+        <field name="name">goshop.invoice.payment.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//div[@role='alert'][6]" position="replace"/>
+                <xpath expr="//div[@role='alert'][5]" position="replace"/>
+                <xpath expr="//div[@role='alert'][4]" position="replace"/>
+                <xpath expr="//div[@role='alert'][3]" position="replace"/>
+                <xpath expr="//field[@name='invoice_outstanding_credits_debits_widget']" position="replace"/>
+                <xpath expr="//field[@name='invoice_payments_widget']" position="replace"/>
+                <xpath expr="//field[@name='invoice_has_outstanding']" position="replace"/>
+            </data>
+        </field>
+    </record>
+    
+
+    <record id="goshop_invoice_form_outstanding" model="ir.ui.view">
+        <field name="name">goshop.invoice.payment.outstanding.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="groups_id" eval="[(4, ref('account.group_account_manager'))]"/>
+        <field name="priority">999</field>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='invoice_sent']" position="before">
+                    <field name="invoice_has_outstanding" invisible="1"/>
+                </xpath>
+                <xpath expr="//sheet" position="before">
+                    <div groups="account.group_account_invoice" class="alert alert-warning" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|', ('state', '!=', 'draft'), ('tax_lock_date_message', '=', False)]}">
+                        <field name="tax_lock_date_message" nolabel="1"/>
+                    </div>
+                    <div groups="account.group_account_invoice" class="alert alert-info" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|', '|', ('type', 'not in', ('out_invoice', 'out_refund')), ('invoice_has_outstanding', '=', False), ('invoice_payment_state', '!=', 'not_paid')]}">
+                        You have <bold><a class="alert-link" href="#outstanding" role="button">outstanding payments</a></bold> for this customer. You can allocate them to mark this invoice as paid.
+                    </div>
+                    <div groups="account.group_account_invoice" class="alert alert-info" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|', '|', ('type', 'not in', ('in_invoice', 'in_refund')), ('invoice_has_outstanding', '=', False), ('invoice_payment_state', '!=', 'not_paid')]}">
+                        You have <bold><a class="alert-link" href="#outstanding" role="button">outstanding debits</a></bold> for this supplier. You can allocate them to mark this bill as paid.
+                    </div>
+                    <div groups="account.group_account_invoice" class="alert alert-info" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|', ('type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund', 'out_receipt', 'in_receipt')), ('invoice_has_matching_suspense_amount','=',False)]}">
+                        You have suspense account moves that match this invoice. <bold><button class="alert-link" type="object" name="action_open_matching_suspense_moves" role="button" string="Check them" style="padding: 0;vertical-align: baseline;"/></bold> to mark this invoice as paid.
+                    </div>
+                </xpath> 
+                <xpath expr="//field[@name='narration']" position="before">
+                    <field name="invoice_outstanding_credits_debits_widget" class="oe_invoice_outstanding_credits_debits" colspan="2" nolabel="1" widget="payment" attrs="{'invisible': ['|', ('state', '!=', 'posted'), ('type', 'in', ('out_receipt', 'in_receipt'))]}" groups="account.group_account_user"/>
+                </xpath>
+                <xpath expr="//field[@name='amount_total']" position="after">
+                    <field name="invoice_payment_wigdet_journal" colspan="2" nolabel="1" widget="payment"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+</odoo>
+
