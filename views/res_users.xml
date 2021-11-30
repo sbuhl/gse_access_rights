@@ -8,10 +8,32 @@
         <field name="priority">20</field>
         <field name="arch" type="xml">
             <data>
-                <xpath expr="//field[@name='company_id']" position="after">
-                    <field name="journal_ids" widget="many2many_tags"/>
-                    <field name="sbu_allowed_users_ids" widget="many2many_tags" domain="[('share', '=', False)]"/>
-                    <field name="sbu_allowed_warehouses_ids" widget="many2many_tags"/>
+                <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                    <page string="Allowed Journals" name="allowed_journals">
+                        <group name="allowed_journals">
+                            <tree string="Allowed Journal" editable="bottom">
+                                <field name="journal_ids"/>
+                            </tree>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                    <page string="Allowed Users" name="allowed_journals">
+                        <group name="allowed_users">
+                            <tree string="Allowed Users" editable="bottom">
+                                <field name="sbu_allowed_users_ids"/>
+                            </tree>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                    <page string="Allowed Warehouses" name="allowed_journals">
+                        <group name="allowed_warehouses">
+                            <tree string="Allowed Users" editable="bottom">
+                                <field name="sbu_allowed_warehouses_ids"/>
+                            </tree>
+                        </group>
+                    </page>
                 </xpath>
             </data>
         </field>

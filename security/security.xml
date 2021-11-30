@@ -2,7 +2,7 @@
 <odoo>
     <data noupdate="1">       
         <record id="journal_user_rule" model="ir.rule">
-            <field name="name">Access to Journal</field>
+            <field name="name">Access to Journal SBU</field>
             <field name="model_id" ref="account.model_account_journal"/>
             <field name="domain_force">[('id','in', user.journal_ids.ids)]</field>
             <field name="perm_unlink" eval="True"/>
@@ -12,7 +12,7 @@
             <field name="groups" eval="[(4, ref('base.group_user'))]"/>
         </record>
         <record id="statement_user_rule" model="ir.rule">
-            <field name="name">Access to Statement</field>
+            <field name="name">Access to Statement SBU</field>
             <field name="model_id" ref="account.model_account_bank_statement"/>
             <field name="domain_force">[('journal_id','in', user.journal_ids.ids)]</field>
             <field name="perm_unlink" eval="True"/>
@@ -22,7 +22,7 @@
             <field name="groups" eval="[(4, ref('base.group_user'))]"/>
         </record>
         <record id="statement_line_user_rule" model="ir.rule">
-            <field name="name">Access to Statement Line</field>
+            <field name="name">Access to Statement Line SBU</field>
             <field name="model_id" ref="account.model_account_bank_statement_line"/>
             <field name="domain_force">['|',('journal_id','in',user.journal_ids.ids),['journal_id','=',False]]</field>
             <field name="perm_unlink" eval="True"/>
@@ -32,9 +32,9 @@
             <field name="groups" eval="[(4, ref('base.group_user'))]"/>
         </record>
         <record id="invoice_user_rule" model="ir.rule">
-            <field name="name">Access to Invoice</field>
+            <field name="name">Access to Invoice SBU</field>
             <field name="model_id" ref="account.model_account_move"/>
-            <field name="domain_force">[('journal_id','in', user.journal_ids.ids),'|','|',('invoice_user_id','=',user.id),('invoice_user_id','=',False),('invoice_user_id','in',user.gopower_allowed_users_ids.ids)]</field>
+            <field name="domain_force">[('journal_id','in', user.journal_ids.ids),'|','|',('invoice_user_id','=',user.id),('invoice_user_id','=',False),('invoice_user_id','in',user.sbu_allowed_users_ids.ids)]</field>
             <field name="perm_unlink" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_read" eval="True"/>
@@ -42,7 +42,7 @@
             <field name="groups" eval="[(4, ref('base.group_user'))]"/>
         </record>
         <record id="invoice_line_user_rule" model="ir.rule">
-            <field name="name">Access to Invoice Line</field>
+            <field name="name">Access to Invoice Line SBU</field>
             <field name="model_id" ref="account.model_account_move_line"/>
             <field name="domain_force">['|',('journal_id','in',user.journal_ids.ids),('journal_id','=',False)]</field>
             <field name="perm_unlink" eval="True"/>
@@ -52,9 +52,9 @@
             <field name="groups" eval="[(4, ref('base.group_user'))]"/>
         </record>
         <record id="sale_order_user_rule" model="ir.rule">
-            <field name="name">Access to Sale Order</field>
+            <field name="name">Access to Sale Order SBU</field>
             <field name="model_id" ref="sale.model_sale_order"/>
-            <field name="domain_force">['|','|',('user_id','=',user.id),('user_id','=',False),('user_id','in',user.gopower_allowed_users_ids.ids)]</field>
+            <field name="domain_force">['|','|',('user_id','=',user.id),('user_id','=',False),('user_id','in',user.sbu_allowed_users_ids.ids)]</field>
             <field name="perm_unlink" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_read" eval="True"/>
@@ -62,9 +62,9 @@
             <field name="groups" eval="[(4, ref('base.group_user'))]"/>
         </record>
         <record id="sale_order_line_user_rule" model="ir.rule">
-            <field name="name">Access to Sale Order Line</field>
+            <field name="name">Access to Sale Order Line SBU</field>
             <field name="model_id" ref="sale.model_sale_order_line"/>
-            <field name="domain_force">['|','|',('order_id.user_id','=',user.id),('order_id.user_id','=',False),('order_id.user_id','in',user.gopower_allowed_users_ids.ids)]</field>
+            <field name="domain_force">['|','|',('order_id.user_id','=',user.id),('order_id.user_id','=',False),('order_id.user_id','in',user.sbu_allowed_users_ids.ids)]</field>
             <field name="perm_unlink" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_read" eval="True"/>
@@ -72,9 +72,40 @@
             <field name="groups" eval="[(4, ref('base.group_user'))]"/>
         </record>
         <record id="payment_user_rule" model="ir.rule">
-            <field name="name">Access to Payments</field>
+            <field name="name">Access to Payments SBU</field>
             <field name="model_id" ref="account.model_account_payment"/>
             <field name="domain_force">['|',('journal_id','in', user.journal_ids.ids), ('destination_journal_id','in',user.journal_ids.ids)]</field>
+            <field name="perm_unlink" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <!-- Warehouses Access Rules -->
+        <record id="warehouse_user_rule" model="ir.rule">
+            <field name="name">Restrict Warehouse Access SBU</field>
+            <field name="model_id" ref="stock.model_stock_warehouse"/>
+            <field name="domain_force">[('id','in',[w.id for w in user.sbu_allowed_warehouses_ids])]</field>
+            <field name="perm_unlink" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_create" eval="True"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="picking_user_rule" model="ir.rule">
+            <field name="name">Restrict Stock Picking Type Access SBU</field>
+            <field name="model_id" ref="stock.model_stock_picking_type"/>
+            <field name="domain_force">[('warehouse_id','in',[w.id for w in user.sbu_allowed_warehouses_ids])]</field>
+            <field name="perm_unlink" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="location_user_rule" model="ir.rule">
+            <field name="name">Restrict Location Access SBU</field>
+            <field name="model_id" ref="stock.model_stock_location"/>
+            <field name="domain_force">['|',('sbu_allowed_warehouses_id','in',[w.id for w in user.sbu_allowed_warehouses_ids]),('sbu_allowed_warehouses_id','=', False)]</field>
             <field name="perm_unlink" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_read" eval="True"/>
