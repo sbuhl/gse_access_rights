@@ -14,7 +14,7 @@
                 <xpath expr="//div[@role='alert'][3]" position="replace"/>
                 <xpath expr="//field[@name='invoice_outstanding_credits_debits_widget']" position="replace"/>
                 <xpath expr="//field[@name='invoice_payments_widget']" position="replace"/>
-                <!-- <xpath expr="//field[@name='invoice_has_outstanding']" position="replace"/> --> -->
+                <!-- <xpath expr="//field[@name='invoice_has_outstanding']" position="replace"/> -->
             </data>
         </field>
     </record>
@@ -34,9 +34,6 @@
                 <xpath expr="//sheet" position="before">
                     <div groups="account.group_account_invoice" class="alert alert-warning" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|', ('state', '!=', 'draft'), ('tax_lock_date_message', '=', False)]}">
                         <field name="tax_lock_date_message" nolabel="1"/>
-                    </div>
-                    <div groups="account.group_account_invoice" class="alert alert-info" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|', '|', ('move_type', 'not in', ('out_invoice', 'out_refund')), ('invoice_has_outstanding', '=', False), ('payment_state', '!=', 'not_paid')]}">
-                        You have <bold><a class="alert-link" href="#outstanding" role="button">outstanding payments</a></bold> for this customer. You can allocate them to mark this invoice as paid.
                     </div>
                     <div groups="account.group_account_invoice" class="alert alert-info" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|', '|', ('move_type', 'not in', ('in_invoice', 'in_refund')), ('invoice_has_outstanding', '=', False), ('payment_state', '!=', 'not_paid')]}">
                         You have <bold><a class="alert-link" href="#outstanding" role="button">outstanding debits</a></bold> for this supplier. You can allocate them to mark this bill as paid.
