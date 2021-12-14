@@ -3,7 +3,7 @@
 {
     'name': "access_rights",
     'version': '0.1',
-    'depends': ['base', 'sale', 'stock'],
+    'depends': ['base', 'l10n_be', 'sale', 'stock'],
     
     'author': "Sébastien Bühl",
     'website': "http://www.buhl.be",
