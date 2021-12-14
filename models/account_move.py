@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import http, models, fields, api
+from odoo import models, fields, api
 
 
 class AccountMove(models.Model):
@@ -14,4 +14,3 @@ class AccountMove(models.Model):
         for record in self:
             record.sudo()._compute_payments_widget_reconciled_info()
             record['invoice_payment_wigdet_journal'] = record.invoice_payments_widget
-
