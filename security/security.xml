@@ -112,7 +112,10 @@
             <field name="perm_create" eval="True"/>
             <field name="groups" eval="[(4, ref('base.group_user'))]"/>
         </record>
-
     </data>
+
+    <record id="group_responsable_magasin" model="res.groups">
+        <field name="name">Responsable Magasin</field>
+    </record>
 
 </odoo>

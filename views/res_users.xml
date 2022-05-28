@@ -38,5 +38,20 @@
             </data>
         </field>
     </record>
-
+    <record id="sbu_users_tree" model="ir.ui.view">
+        <field name="name">sbu.users.tree</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_tree"/>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='company_id']" position="replace">
+                    <field name="company_ids" optional="show" widget="many2many_tags"/>
+                </xpath>
+                <xpath expr="//field[@name='company_ids']" position="after">
+                    <field name="employee_count" optional="hide" string="Employee"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
 </odoo>
