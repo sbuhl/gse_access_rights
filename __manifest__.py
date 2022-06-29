@@ -1,20 +1,19 @@
 # -*- coding: utf-8 -*-
 
 {
-    'name': "access_rights",
-    'version': '0.2',
-    'depends': ['base', 'l10n_be', 'account_accountant', 'sale', 'stock', 'partner_commission'],
-    
+    'name': "Access Rigths",
+    'version': '0.3',
+    'depends': ['base', 'hr', 'l10n_be', 'account', 'account_accountant', 'sale', 'stock', 'partner_commission'],
+    'description': """
+    Allow to specify access rights on users, journals and warehouses.
+    """,
     'author': "Sébastien Bühl",
-    'website': "http://www.buhl.be",
+    'website': "https://github.com/sbuhl/gse_access_rights",
     'license': 'LGPL-3',
 
     'application': True,
     'category': 'Customizations',
     'summary': 'Allow access to other user documents',
-    'description': """
-        Access rights for invoices and other stuffs.
-    """,
 
     'data': [
         'security/security.xml',

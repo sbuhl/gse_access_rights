@@ -114,8 +114,4 @@
         </record>
     </data>
 
-    <record id="group_responsable_magasin" model="res.groups">
-        <field name="name">Responsable Magasin</field>
-    </record>
-
 </odoo>
