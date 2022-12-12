@@ -123,6 +123,12 @@
             <field name="perm_create" eval="True"/>
             <field name="groups" eval="[(4, ref('base.group_user'))]"/>
         </record>
+        <!-- New group Cashier for accountant and specific for Jeanne--> 
+        <record id="group_account_cashier" model="res.groups">
+            <field name="name">Cashier</field>
+            <field name="category_id" ref="base.module_category_accounting_accounting"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
     </data>
 
 </odoo>
