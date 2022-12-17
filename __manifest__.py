@@ -2,7 +2,7 @@
 
 {
     'name': "Access Rigths",
-    'version': '0.6',
+    'version': '0.7',
     'depends': ['base', 'hr', 'l10n_be', 'account', 'account_accountant', 'sale', 'stock', 'partner_commission'],
     'description': """
     Allow to specify access rights on users, journals and warehouses.
