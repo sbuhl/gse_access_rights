@@ -129,6 +129,12 @@
             <field name="category_id" ref="base.module_category_accounting_accounting"/>
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
+        <!-- New Group Validator to prevent Inventory user to validate a stock.picking -->
+        <record id="group_stock_validator" model="res.groups">
+            <field name="name">Validator</field>
+            <field name="category_id" ref="base.module_category_inventory_inventory"/>
+            <field name="implied_ids" eval="[(4, ref('stock.group_stock_user'))]"/>
+        </record>
     </data>
 
 </odoo>
