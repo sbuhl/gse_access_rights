@@ -2,7 +2,7 @@
 
 {
     'name': "Access Rigths",
-    'version': '0.8',
+    'version': '0.8.1',
     'depends': ['base', 'hr', 'l10n_be', 'account', 'account_accountant', 'sale', 'stock', 'partner_commission'],
     'description': """
     Allow to specify access rights on users, journals and warehouses.
@@ -22,6 +22,6 @@
         'views/account_bank_statement.xml',
         'views/account_move.xml',
         'views/sale_order.xml',
-        #'views/stock_picking.xml'
+        'views/stock_picking.xml'
     ],
 }
