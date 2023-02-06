@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<odoo>
+    <record id="sbu_project_task" model="ir.ui.view">
+        <field name="name">sbu.project.task</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//form[1]/header[1]/button[@name='action_send_report']" position="attributes">
+                    <attribute name="groups">gse_access_rights.group_fsm_planner</attribute>
+                  </xpath>
+                  <xpath expr="//form[1]/header[1]/button[@name='action_fsm_validate']" position="attributes">
+                    <attribute name="groups">gse_access_rights.group_fsm_planner</attribute>
+                  </xpath>
+                  <xpath expr="//form[1]/header[1]/button[@name='action_preview_worksheet'][2]" position="attributes">
+                    <attribute name="groups">gse_access_rights.group_fsm_planner</attribute>
+                  </xpath>
+                  <xpath expr="//form[1]/header[1]/button[@name='action_send_report'][2]" position="attributes">
+                    <attribute name="groups">gse_access_rights.group_fsm_planner</attribute>
+                  </xpath>
+                  <xpath expr="//form[1]/header[1]/button[@name='action_fsm_validate'][2]" position="attributes">
+                    <attribute name="groups">gse_access_rights.group_fsm_planner</attribute>
+                  </xpath>
+            </data>
+        </field>
+    </record>
+</odoo>

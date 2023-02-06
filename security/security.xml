@@ -135,6 +135,12 @@
             <field name="category_id" ref="base.module_category_inventory_inventory"/>
             <field name="implied_ids" eval="[(4, ref('stock.group_stock_user'))]"/>
         </record>
+        <!-- New Group Planner to prevent FSM user to send and validate report -->
+        <record id="gse_access_rights.group_fsm_planner" model="res.groups">
+            <field name="name">Planner</field>
+            <field name="category_id" ref="base.module_category_services_field_service"/>
+            <field name="implied_ids" eval="[(4, ref('industry_fsm.group_fsm_user'))]"/>
+        </record>
     </data>
 
 </odoo>
