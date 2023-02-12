@@ -21,6 +21,7 @@
         'views/res_users.xml',
         'views/account_bank_statement.xml',
         'views/account_move.xml',
+        'views/check_access.xml',
         'views/sale_order.xml',
         'views/stock_picking.xml',
         'views/project_task.xml',
