@@ -30,17 +30,27 @@
                 <xpath expr="//field[@name='opportunity_id']" position="attributes">
                     <attribute name="groups"/>
                 </xpath>
-                <xpath expr="//button[@name='action_done']" position="attributes">
-                    <attribute name="groups">account_approval.group_sales_level_manager</attribute>
-                </xpath>
-                <xpath expr="//button[@name='action_unlock']" position="attributes">
-                    <attribute name="groups">account_approval.group_sales_level_manager</attribute>
-                </xpath>
                 <xpath expr="//button[@name='action_confirm'][1]" position="replace">
                     <button name="action_confirm" id="action_confirm" data-hotkey="v" string="Confirm" class="btn-primary" type="object" attrs="{'invisible': [('state', 'not in', ['sent'])]}" confirm="Une fois confirmée, le devis ne pourra plus être modifié. Assurez-vous que tous les produits sont bien présents sur le devis avant de confirmer."/>
                 </xpath>
                 <xpath expr="//button[@name='action_confirm'][2]" position="replace">
                     <button name="action_confirm" data-hotkey="v" string="Confirm" type="object" attrs="{'invisible': [('state', 'not in', ['draft'])]}" confirm="Une fois confirmée, le devis ne pourra plus être modifié. Assurez-vous que tous les produits sont bien présents sur le devis avant de confirmer."/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+    <record id="sbu_sale_order_done" model="ir.ui.view">
+    <field name="name">sbu.sale.order.form.done</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_auto_done_setting"/>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//button[@name='action_done']" position="attributes">
+                    <attribute name="groups">account_approval.group_sales_level_manager</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_unlock']" position="attributes">
+                    <attribute name="groups">account_approval.group_sales_level_manager</attribute>
                 </xpath>
             </data>
         </field>

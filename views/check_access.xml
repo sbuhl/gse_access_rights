@@ -1,0 +1,117 @@
+<odoo>
+<data>
+    <!-- Warehouse -->
+    <record id="warehouse_access_tree" model="ir.ui.view">
+        <field name="name">warehouse.access.view.tree</field>
+        <field name="model">stock.warehouse</field>
+        <field name="arch" type="xml">
+            <tree string="Warehouse Access" delete="0" create="0">
+                <field name="name"/>
+                <field name="sbu_allowed_user_ids"/>
+            </tree>
+        </field>
+    </record>
+    <record id="warehouse_access_form" model="ir.ui.view">
+        <field name="name">warehouse.access.view.form</field>
+        <field name="model">stock.warehouse</field>
+        <field name="arch" type="xml">
+            <form string="Warehouse Access">
+                <field name="name"/>
+                <field name="sbu_allowed_user_ids"/>
+            </form>
+        </field>
+    </record>
+
+    <record id="warehouse_access_action" model="ir.actions.act_window">
+        <field name="name">Warehouse Access</field>
+        <field name="res_model">stock.warehouse</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('gse_access_rights.warehouse_access_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('gse_access_rights.warehouse_access_form')})]"/>
+    </record>
+
+    <menuitem
+        name="Warehouse Access"
+        id="warehouse_access_menu"
+        parent="base.menu_users"
+        action="warehouse_access_action"
+        sequence="106"/>
+
+    <!-- Users -->
+    <record id="user_access_tree" model="ir.ui.view">
+        <field name="name">user.access.view.tree</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <tree string="User Access" delete="0" create="0">
+                <field name="name"/>
+                <field name="sbu_allowed_user_ids_inverse"/>
+            </tree>
+        </field>
+    </record>
+    <record id="user_access_form" model="ir.ui.view">
+        <field name="name">user.access.view.form</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <form string="User Access">
+                <field name="name"/>
+                <field name="sbu_allowed_user_ids_inverse"/>
+            </form>
+        </field>
+    </record>
+
+    <record id="user_access_action" model="ir.actions.act_window">
+        <field name="name">User Access</field>
+        <field name="res_model">res.users</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('gse_access_rights.user_access_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('gse_access_rights.user_access_form')})]"/>
+    </record>
+
+    <menuitem
+        name="User Access"
+        id="user_access_menu"
+        parent="base.menu_users"
+        action="user_access_action"
+        sequence="101"/>
+
+    <!-- Journal -->
+    <record id="account_journal_access_tree" model="ir.ui.view">
+        <field name="name">account.journal.access.view.tree</field>
+        <field name="model">account.journal</field>
+        <field name="arch" type="xml">
+            <tree string="Journal Account Access" delete="0" create="0">
+                <field name="name"/>
+                <field name="sbu_allowed_user_ids"/>
+            </tree>
+        </field>
+    </record>
+    <record id="account_journal_access_form" model="ir.ui.view">
+        <field name="name">account.journal.access.view.form</field>
+        <field name="model">account.journal</field>
+        <field name="arch" type="xml">
+            <form string="Journal Account Access">
+                <field name="name"/>
+                <field name="sbu_allowed_user_ids"/>
+            </form>
+        </field>
+    </record>
+
+    <record id="account_journal_access_action" model="ir.actions.act_window">
+        <field name="name">Journal Account Access</field>
+        <field name="res_model">account.journal</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('gse_access_rights.account_journal_access_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('gse_access_rights.account_journal_access_form')})]"/>
+    </record>
+
+    <menuitem
+        name="Journal Account Access"
+        id="account_journal_access_menu"
+        parent="base.menu_users"
+        action="account_journal_access_action"
+        sequence="110"/>
+</data>
+</odoo>
