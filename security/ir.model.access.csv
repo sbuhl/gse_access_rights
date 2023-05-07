@@ -9,7 +9,6 @@ access_account_move_line_uinvoice,account.move.line invoice,account.model_accoun
 access_account_analytic_line_invoice,account.analytic.line invoice,account.model_account_analytic_line,gse_access_rights.group_account_cashier,1,1,1,1
 access_account_journal_invoice,account.journal invoice,account.model_account_journal,gse_access_rights.group_account_cashier,1,0,0,0
 access_account_account_invoice,account.account invoice,account.model_account_account,gse_access_rights.group_account_cashier,1,0,0,0
-access_account_account_type_invoice,account.account.type invoice,account.model_account_account_type,gse_access_rights.group_account_cashier,1,0,0,0
 
 access_account_tax_invoice,account.tax,account.model_account_tax,gse_access_rights.group_account_cashier,1,0,0,0
 access_account_account_tax_user,account.account.tag,account.model_account_account_tag,gse_access_rights.group_account_cashier,1,0,0,0
@@ -27,5 +26,3 @@ access_account_payment,account.payment,account.model_account_payment,gse_access_
 access_account_payment_register,access.account.payment.register,account.model_account_payment_register,gse_access_rights.group_account_cashier,1,1,1,0
 access_account_move_reversal,access.account.move.reversal,account.model_account_move_reversal,gse_access_rights.group_account_cashier,1,1,1,0
 access_account_invoice_send,access.account.invoice.send,account.model_account_invoice_send,gse_access_rights.group_account_cashier,1,1,1,0
-
-access_account_analytic_default_invoice,account.analytic.default invoice,account.model_account_analytic_default,gse_access_rights.group_account_cashier,1,1,1,1

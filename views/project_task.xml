@@ -25,4 +25,21 @@
             </data>
         </field>
     </record>
+
+    <menuitem id="industry_fsm.fsm_menu_planning"
+        parent="industry_fsm.fsm_menu_root"
+        groups="gse_access_rights.group_fsm_planner"/>
+
+    <menuitem id="industry_fsm.project_task_menu_planning_by_user_fsm"
+        parent="industry_fsm.fsm_menu_planning"
+        groups="gse_access_rights.group_fsm_planner"/>
+
+    <menuitem id="industry_fsm.project_task_menu_planning_by_project_fsm"
+        parent="industry_fsm.fsm_menu_planning"
+        groups="gse_access_rights.group_fsm_planner"/>
+
+    <menuitem id="industry_fsm_report.project_task_menu_planning_by_project_fsm"
+        parent="industry_fsm.fsm_menu_planning"
+        groups="gse_access_rights.group_fsm_planner"/>
+
 </odoo>
