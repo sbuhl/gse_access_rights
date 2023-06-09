@@ -3,7 +3,7 @@
 {
     'name': "Access Rigths",
     'version': '0.8.2',
-    'depends': ['base', 'hr', 'l10n_be', 'account', 'account_accountant', 'sale', 'stock', 'partner_commission', 'industry_fsm'],
+    'depends': ['base', 'hr', 'l10n_be', 'account', 'account_accountant', 'sale', 'stock', 'partner_commission', 'industry_fsm', 'industry_fsm_sale_report'],
     'description': """
     Allow to specify access rights on users, journals and warehouses.
     """,
