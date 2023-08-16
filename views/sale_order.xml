@@ -7,14 +7,19 @@
         <field name="priority">20</field>
         <field name="arch" type="xml">
             <data>
+                <!-- we are adding groups to field but this field is also used
+                in invisible condition of other field so we need it -->
+                <xpath expr="//field[@name='referrer_id']" position="after">
+                    <field name="referrer_id" invisible="1"/>
+                </xpath>
                 <xpath expr="//field[@name='referrer_id']" position="attributes">
                     <attribute name="groups">partner_commission.group_commission_manager</attribute>
                     <attribute name="options">{"no_open":true}</attribute>
                 </xpath>
-                <xpath expr="//field[@name='commission_plan_id']" position="attributes">
-                    <attribute name="groups">partner_commission.group_commission_manager</attribute>
+                <xpath expr="//field[@name='commission_plan_id']" position="after">
+                    <field name="commission_plan_id" invisible="1"/>
                 </xpath>
-                <xpath expr="//field[@name='commission']" position="attributes">
+                <xpath expr="//field[@name='commission_plan_id']" position="attributes">
                     <attribute name="groups">partner_commission.group_commission_manager</attribute>
                 </xpath>
             </data>
