@@ -6,7 +6,7 @@
     'depends': [
         'base', 'hr', 'l10n_be', 'account', 'account_accountant', 'sale', 'stock', 'partner_commission', 'industry_fsm',
         'industry_fsm_sale_report',
-        'account_approval',  # account_approval.group_sales_level_manager
+        # 'account_approval',  # account_approval.group_sales_level_manager
     ],
     'description': """
     Allow to specify access rights on users, journals and warehouses.
