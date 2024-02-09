@@ -22,7 +22,7 @@
         "stock",
         "event",
         "sales_team",
-        "point_of_sale"
+        "point_of_sale",
         # 'account_approval',  # account_approval.group_sales_level_manager
     ],
     "description": """
