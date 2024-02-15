@@ -7,3 +7,4 @@ class AccountJournal(models.Model):
     _inherit = "account.journal"
 
     sbu_allowed_user_ids = fields.Many2many("res.users", string="Allowed Users")
+
