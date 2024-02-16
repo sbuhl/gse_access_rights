@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<odoo>
+            <menuitem name="Accounting"
+                id="account_accountant.menu_accounting"
+                groups="account.group_account_readonly,account.group_account_invoice,gse_access_rights.group_account_cashier"
+                web_icon="account_accountant,static/description/icon.svg"
+                sequence="60"/>
+
+                
+
+</odoo>

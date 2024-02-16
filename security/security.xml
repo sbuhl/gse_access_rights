@@ -124,12 +124,11 @@
             <field name="groups" eval="[(4, ref('base.group_user'))]"/>
         </record>
         <!-- New group Cashier for accountant and specific for Jeanne--> 
-        <!-- <record id="group_account_cashier" model="res.groups">
+         <record id="group_account_cashier" model="res.groups">
             <field name="name">Cashier</field>
             <field name="category_id" ref="base.module_category_accounting_accounting"/>
-            <field name="implied_ids" eval="[(4, ref('account.group_account_manager'))]"/>
-        </record> -->
-        <!-- <record id="cashier_user_rule" model="ir.rule">
+        </record> 
+        <record id="cashier_user_rule" model="ir.rule">
              <field name="name">Restrict Cashier Access AM2</field>
              <field name="model_id" ref="account.model_account_move"/>
              <field name="domain_force">[('payment_state', 'in', ['not_paid', 'in_payment', 'partial', 'reversed'])]</field>
@@ -147,7 +146,8 @@
              <field name="perm_write" eval="False"/>
              <field name="perm_create" eval="False"/>
              <field name="perm_unlink" eval="False"/>
-        </record>  -->
+             <field name="perm_read" eval="True"/>
+        </record> 
         <!-- New Group Validator to prevent Inventory user to validate a stock.picking -->
         <record id="gse_access_rights.group_stock_validator" model="res.groups">
             <field name="name">Validator</field>
