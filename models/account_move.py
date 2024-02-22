@@ -17,16 +17,16 @@ class AccountMove(models.Model):
 
     # === Payment widget fields === #
     invoice_outstanding_credits_debits_widget = fields.Binary(
-        groups="account.group_account_manager",
+        groups="gse_access_rights.group_account_cashier",
         compute='_compute_payments_widget_to_reconcile_info',
         exportable=False,
     )
     invoice_has_outstanding = fields.Boolean(
-        groups="account.group_account_manager",
+        groups="gse_access_rights.group_account_cashier",
         compute='_compute_payments_widget_to_reconcile_info',
     )
     invoice_payments_widget = fields.Binary(
-        groups="account.group_account_manager",
+        groups="gse_access_rights.group_account_cashier",
         compute='_compute_payments_widget_reconciled_info',
         exportable=False,
     )
