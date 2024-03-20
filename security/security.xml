@@ -140,6 +140,15 @@
             <field name="category_id" ref="base.module_category_services_field_service"/>
             <field name="implied_ids" eval="[(4, ref('industry_fsm.group_fsm_user'))]"/>
         </record>
+          <!-- New Group to give validation to create new product -->
+        <record model="res.groups" id="module_Product_creation_access_right">
+            <field name="name">Product Creation </field>
+            <field name="category_id" ref="base.module_category_usability"/>
+        </record>
+        <record model="res.groups" id="module_Product_Delection_access_right">
+            <field name="name">Product Deletion</field>
+            <field name="category_id" ref="base.module_category_usability"/>
+        </record>
     </data>
 
 </odoo>
