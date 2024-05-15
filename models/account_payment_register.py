@@ -9,5 +9,6 @@ class AccountPaymentRegister(models.TransientModel):
     @api.model
     def _get_batch_available_journals(self, batch_result):
         return super(
-            AccountPaymentRegister, self.with_user(self.env.user),
+            AccountPaymentRegister,
+            self.with_user(self.env.user),
         )._get_batch_available_journals(batch_result)
