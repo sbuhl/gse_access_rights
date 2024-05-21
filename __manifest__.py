@@ -29,5 +29,7 @@
         'views/sale_order.xml',
         'views/stock_picking.xml',
         'views/project_task.xml',
+        'views/account_menu.xml',
+
     ],
 }
