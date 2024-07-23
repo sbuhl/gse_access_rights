@@ -25,4 +25,4 @@ access_account_payment,account.payment,account.model_account_payment,gse_access_
 
 access_account_payment_register,access.account.payment.register,account.model_account_payment_register,gse_access_rights.group_account_cashier,1,1,1,0
 access_account_move_reversal,access.account.move.reversal,account.model_account_move_reversal,gse_access_rights.group_account_cashier,1,1,1,0
-access_account_invoice_send,access.account.invoice.send,account.model_account_invoice_send,gse_access_rights.group_account_cashier,1,1,1,0
+access_account_invoice_send,access.account.move.send,account.model_account_move_send,gse_access_rights.group_account_cashier,1,1,1,0

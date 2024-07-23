@@ -2,7 +2,7 @@
 
 {
     'name': "Access Rigths",
-    'version': '0.8.2',
+    'version': '17.0.0.1',
     'depends': [
         'base', 'hr', 'l10n_be', 'account', 'account_accountant', 'sale', 'stock', 'partner_commission', 'industry_fsm',
         'industry_fsm_sale_report',
@@ -23,7 +23,7 @@
         'security/security.xml',
         'security/ir.model.access.csv',
         'views/res_users.xml',
-        'views/account_bank_statement.xml',
+        #'views/account_bank_statement.xml',
         'views/account_move.xml',
         'views/check_access.xml',
         'views/sale_order.xml',

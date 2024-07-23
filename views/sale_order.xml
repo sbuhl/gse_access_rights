@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding='UTF-8'?>
 <odoo>
     <record id="sbu_sale_order_commission" model="ir.ui.view">
         <field name="name">sbu.sale.order.commission.form</field>
@@ -7,8 +6,6 @@
         <field name="priority">20</field>
         <field name="arch" type="xml">
             <data>
-                <!-- we are adding groups to field but this field is also used
-                in invisible condition of other field so we need it -->
                 <xpath expr="//field[@name='referrer_id']" position="after">
                     <field name="referrer_id" invisible="1"/>
                 </xpath>
@@ -36,16 +33,19 @@
                     <attribute name="groups"/>
                 </xpath>
                 <xpath expr="//button[@name='action_confirm'][1]" position="replace">
-                    <button name="action_confirm" id="action_confirm" data-hotkey="v" string="Confirm" class="btn-primary" type="object" attrs="{'invisible': [('state', 'not in', ['sent'])]}" confirm="Une fois confirmée, le devis ne pourra plus être modifié. Assurez-vous que tous les produits sont bien présents sur le devis avant de confirmer."/>
+                    <button name="action_confirm" id="action_confirm" data-hotkey="v" string="Confirm" class="btn-primary" type="object" invisible="context.get('state', '') != 'sent'" confirm="Une fois confirmée, le devis ne pourra plus être modifié. Assurez-vous que tous les produits sont bien présents sur le devis avant de confirmer."/>
                 </xpath>
                 <xpath expr="//button[@name='action_confirm'][2]" position="replace">
-                    <button name="action_confirm" data-hotkey="v" string="Confirm" type="object" attrs="{'invisible': [('state', 'not in', ['draft'])]}" confirm="Une fois confirmée, le devis ne pourra plus être modifié. Assurez-vous que tous les produits sont bien présents sur le devis avant de confirmer."/>
+                    <button name="action_confirm" data-hotkey="v" string="Confirm" type="object" invisible="context.get('state', '') != 'draft'" confirm="Une fois confirmée, le devis ne pourra plus être modifié. Assurez-vous que tous les produits sont bien présents sur le devis avant de confirmer."/>
+                </xpath>
+                <xpath expr="//button[@name='action_unlock']" position="attributes">
+                    <attribute name="groups">account_approval.group_sales_level_manager</attribute>
                 </xpath>
             </data>
         </field>
     </record>
-    <record id="sbu_sale_order_done" model="ir.ui.view">
-    <field name="name">sbu.sale.order.form.done</field>
+    <!-- <record id="sbu_sale_order_done" model="ir.ui.view">
+        <field name="name">sbu.sale.order.form.done</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_sales_order_auto_done_setting"/>
         <field name="priority">20</field>
@@ -54,10 +54,8 @@
                 <xpath expr="//button[@name='action_done']" position="attributes">
                     <attribute name="groups">account_approval.group_sales_level_manager</attribute>
                 </xpath>
-                <xpath expr="//button[@name='action_unlock']" position="attributes">
-                    <attribute name="groups">account_approval.group_sales_level_manager</attribute>
-                </xpath>
+                
             </data>
         </field>
-    </record>
+    </record> -->
 </odoo>
